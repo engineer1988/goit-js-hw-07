@@ -11,11 +11,20 @@
 //         'color: #2E2F42; font-size: 24px; font-weight: 600; line-height: 1.33; letter-spacing: 0.04em;')
 //   )
 //   .join('');
-const categories = document.querySelectorAll('.item ul');
+const categories = document.querySelectorAll('#categories ul');
 const numberOfCategories = categories.length;
 console.log(`Number of categories: ${numberOfCategories}`);
 
-const cat = document.querySelectorAll('h2');
-const category = cat.forEach(element =>
-  console.log(`Category: ${element.textContent}`)
-);
+const elements = document.querySelectorAll(' .item');
+console.log(elements[0].children[0].textContent);
+
+// const cat = elements.forEach(element => console.log(`Element: ${element}`));
+// console.log(categories);
+
+// const categoryElements = document.querySelectorAll('.item  h2');
+// const category = categoryElements.forEach(element =>
+//   console.log(`Category: ${element.textContent}`)
+// );
+// const cat = document
+//   .querySelectorAll('.item li')
+//   .forEach(element => console.log(`Element: ${numberOfCategories}`));
