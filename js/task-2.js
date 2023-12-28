@@ -27,6 +27,10 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
+const body = document.querySelector('body');
+body.style.marginLeft = '0px';
+body.style.marginRight = '0px';
+
 const markup = images
   .map(
     technology =>
