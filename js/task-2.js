@@ -54,6 +54,7 @@ gallery.style.rowGap = '48px';
 gallery.style.columnGap = '24px';
 gallery.style.margin = '0px';
 gallery.style.padding = '100px 156px';
+gallery.style.backgroundColor = '#FFF';
 
 const image = document.querySelectorAll('.image');
 const markup2 = image.forEach(
