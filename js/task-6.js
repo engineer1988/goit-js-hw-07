@@ -9,22 +9,36 @@ const createFocusBtn = document.querySelector('[data-create]');
 const destroyFocusBtn = document.querySelector('[data-destroy]');
 const boxes = document.querySelector('#boxes');
 
-createFocusBtn.addEventListener('click', createBoxes);
+createFocusBtn.addEventListener('focus', createBoxes);
 
 function createBoxes() {
+  if (boxes.hasChildNodes()) {
+    destroyBoxes();
+  }
   let i = 0;
   let b = 30;
-  while (i < numberInput.value) {
-    const item = document.createElement('div');
+  let item;
+  while (
+    i < numberInput.value &&
+    numberInput.value >= 1 &&
+    numberInput.value <= 100
+  ) {
+    item = document.createElement('div');
+    boxes.append(item);
     item.style.width = b + 'px';
     item.style.height = b + 'px';
     item.style.backgroundColor = getRandomHexColor();
-    boxes.append(item);
     i++;
     b += 10;
   }
+  numberInput.value = '';
 }
 
-destroyFocusBtn.addEventListener('click', () => {
-  numberInput.value = '';
-});
+destroyFocusBtn.addEventListener('focus', destroyBoxes);
+function destroyBoxes() {
+  let item1 = document.querySelectorAll('#boxes div');
+  const result = item1.forEach(element => {
+    element.remove();
+  });
+  return result;
+}
