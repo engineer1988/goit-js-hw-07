@@ -35,6 +35,7 @@ function createBoxes() {
 }
 
 destroyFocusBtn.addEventListener('focus', destroyBoxes);
+
 function destroyBoxes() {
   let item1 = document.querySelectorAll('#boxes div');
   const result = item1.forEach(element => {
