@@ -34,7 +34,7 @@ body.style.marginRight = '0px';
 const markup = images
   .map(
     technology =>
-      `<li class="gallery-item"><img class="image" src=${technology.url} alt=${technology.alt} width="360" height="300"/></li>`
+      `<li class="gallery-item"><img class="gallery-image" src="${technology.url}" alt="${technology.alt}" width="360" height="300"/></li>`
   )
   .join('');
 
@@ -43,9 +43,7 @@ gallery.insertAdjacentHTML('afterbegin', markup);
 const item = document.querySelectorAll('.gallery-item');
 
 const markup1 = item.forEach(
-  element =>
-    (element.style = `list-style-type: none;     width: calc((100% - 48px) / 3);
-  `)
+  element => (element.style = `width: calc((100% - 48px) / 3);`)
 );
 
 gallery.style.display = 'flex';
@@ -55,8 +53,9 @@ gallery.style.columnGap = '24px';
 gallery.style.margin = '0px';
 gallery.style.padding = '100px 156px';
 gallery.style.backgroundColor = '#FFF';
+gallery.style.listStyleType = 'none';
 
-const image = document.querySelectorAll('.image');
+const image = document.querySelectorAll('.gallery-image');
 const markup2 = image.forEach(
   element =>
     (element.style = `display: block;     max-width: 100%;
