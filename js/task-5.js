@@ -1,11 +1,15 @@
-const widget = document.querySelector('body');
-const color = document.querySelector('.color');
-const changeColor = document.querySelector('.change-color');
-changeColor.addEventListener('click', getRandoHmexColor);
+const body = document.querySelector('body');
+const colorSpan = document.querySelector('.color');
+const changeColorButton = document.querySelector('.change-color');
 
-function getRandoHmexColor() {
-  return (widget.style.backgroundColor = color.textContent =
-    `#${Math.floor(Math.random() * 16777215)
-      .toString(16)
-      .padStart(6, 0)}`);
+changeColorButton.addEventListener('click', function () {
+  const color = getRandomHexColor();
+  body.style.backgroundColor = color;
+  colorSpan.textContent = color;
+});
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
