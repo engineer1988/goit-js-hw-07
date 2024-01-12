@@ -1,49 +1,3 @@
-// function getRandomHexColor() {
-//   return `#${Math.floor(Math.random() * 16777215)
-//     .toString(16)
-//     .padStart(6, 0)}`;
-// }
-
-// const numberInput = document.querySelector('input');
-// const createFocusBtn = document.querySelector('[data-create]');
-// const destroyFocusBtn = document.querySelector('[data-destroy]');
-// const boxes = document.querySelector('#boxes');
-
-// createFocusBtn.addEventListener('focus', createBoxes);
-
-// function createBoxes() {
-//   if (boxes.hasChildNodes()) {
-//     destroyBoxes();
-//   }
-//   let i = 0;
-//   let b = 30;
-//   let item;
-//   while (
-//     i < numberInput.value &&
-//     numberInput.value >= 1 &&
-//     numberInput.value <= 100
-//   ) {
-//     item = document.createElement('div');
-//     boxes.append(item);
-//     item.style.width = b + 'px';
-//     item.style.height = b + 'px';
-//     item.style.backgroundColor = getRandomHexColor();
-//     i++;
-//     b += 10;
-//   }
-//   numberInput.value = '';
-// }
-
-// destroyFocusBtn.addEventListener('focus', destroyBoxes);
-
-// function destroyBoxes() {
-//   let item1 = document.querySelectorAll('#boxes div');
-//   const result = item1.forEach(element => {
-//     element.remove();
-//   });
-//   return result;
-// }
-// =================================================
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
@@ -54,33 +8,35 @@ const numberInput = document.querySelector('input');
 const createFocusBtn = document.querySelector('[data-create]');
 const destroyFocusBtn = document.querySelector('[data-destroy]');
 const boxes = document.querySelector('#boxes');
+const width = 30;
+const height = 30;
+const increment = 10;
 
 createFocusBtn.addEventListener('click', createBoxes);
+
 function createBoxes() {
+  const amount = Number(numberInput.value);
+
   if (boxes.hasChildNodes()) {
     destroyBoxes();
   }
-  let i = 0;
-  let b = 30;
-  let item;
-  while (
-    i < numberInput.value &&
-    numberInput.value >= 1 &&
-    numberInput.value <= 100
-  ) {
-    item = document.createElement('div');
-    boxes.append(item);
-    item.style.width = b + 'px';
-    item.style.height = b + 'px';
-    item.style.backgroundColor = getRandomHexColor();
-    i++;
-    b += 10;
+
+  if (amount >= 1 && amount <= 100) {
+    let i = 0;
+
+    while (i < amount) {
+      let item = document.createElement('div');
+      boxes.append(item);
+      item.style.width = width + increment * i + 'px';
+      item.style.height = height + increment * i + 'px';
+      item.style.backgroundColor = getRandomHexColor();
+      i++;
+    }
   }
-  // console.log('amount:', numberInput.value);
   numberInput.value = '';
 }
 
-destroyFocusBtn.addEventListener('focus', destroyBoxes);
+destroyFocusBtn.addEventListener('click', destroyBoxes);
 
 function destroyBoxes() {
   boxes.innerHTML = '';
